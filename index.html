@@ -1,0 +1,40 @@
+<textarea id=text_input placeholder='enter text'></textarea>
+<pre id=output>no input yet!</pre>
+<textarea id=script_input placeholder='enter script'></textarea>
+
+<style>
+html { padding: 4em }
+body
+	{ margin: 0
+	; height: 100%
+	; display: grid
+	; grid-template-columns: min-content 1fr
+	; grid-template-rows:    min-content 1fr
+	}
+#output
+	{ margin: 0
+	; padding: 1em
+	; grid-row-end: span 2
+	; overflow: scroll
+	}
+#text_input { width: 25em; height: 30em }
+</style>
+
+<script>
+const TEXT_INPUT   = document.querySelector('#text_input')
+const SCRIPT_INPUT = document.querySelector('#script_input')
+const OUTPUT       = document.querySelector('#output')
+
+TEXT_INPUT.addEventListener('input', e => {
+	const fun = eval(`(function(text){ ${SCRIPT_INPUT.value} })`)
+
+	OUTPUT.innerText = fun(TEXT_INPUT.value)
+})
+
+
+const script_url = new URLSearchParams(window.location.search).get('surl')
+if (script_url)
+	fetch(script_url)
+		.then(r => r.text())
+		.then(text => SCRIPT_INPUT.value = text)
+</script>
