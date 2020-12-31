@@ -25,16 +25,17 @@ const TEXT_INPUT   = document.querySelector('#text_input')
 const SCRIPT_INPUT = document.querySelector('#script_input')
 const OUTPUT       = document.querySelector('#output')
 
-TEXT_INPUT.addEventListener('input', e => {
-	const fun = eval(`(function(text){ ${SCRIPT_INPUT.value} })`)
+const get_fun = () => eval(`(function(text){ ${SCRIPT_INPUT.value} })`)
 
-	OUTPUT.innerText = fun(TEXT_INPUT.value)
-})
+let fun = get_fun()
 
+TEXT_INPUT.addEventListener('input', _ => OUTPUT.innerText = fun(TEXT_INPUT.value))
+SCRIPT_INPUT.addEventListener('input', _ => fun = get_fun())
 
 const script_url = new URLSearchParams(window.location.search).get('surl')
 if (script_url)
 	fetch(script_url)
 		.then(r => r.text())
 		.then(text => SCRIPT_INPUT.value = text)
+		.then(_ => fun = get_fun())
 </script>
