@@ -30,7 +30,7 @@ const get_fun = () => eval(`(function(text){ ${SCRIPT_INPUT.value} })`)
 let fun = get_fun()
 
 TEXT_INPUT.addEventListener('input', _ => OUTPUT.innerText = fun(TEXT_INPUT.value))
-SCRIPT_INPUT.addEventListener('input', _ => fun = get_fun())
+SCRIPT_INPUT.addEventListener('input', _ => OUTPUT.innerText = (fun = get_fun())(TEXT_INPUT.value))
 
 const script_url = new URLSearchParams(window.location.search).get('surl')
 if (script_url)
