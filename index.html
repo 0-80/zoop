@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <textarea id=text_input placeholder='enter text'></textarea>
 <pre id=output>no input yet!</pre>
 <textarea id=script_input placeholder='enter script'></textarea>
@@ -18,6 +20,15 @@ body
 	; overflow: scroll
 	}
 #text_input { width: 25em; height: 30em }
+
+@media (max-aspect-ratio: 1/1) {
+html { padding: 1em }
+#text_input { width: 100%; height: 100% }
+body
+	{ grid-template-columns: 1fr
+	; grid-template-rows: 2fr 2fr 1fr
+	}
+}
 </style>
 
 <script>
