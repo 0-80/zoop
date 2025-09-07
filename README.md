@@ -10,8 +10,7 @@ you can automatically load a script from url with `surl` url param
 see the file itself and examples (below) for how it actually works
 
 ## examples
-- [JSON pretty printer](https://hywn.github.io/zoop/?surl=https://raw.githubusercontent.com/hywn/zoop/main/examples/jsonpp.js)
-- [URL pretty printer](https://hywn.github.io/zoop/?surl=https://raw.githubusercontent.com/hywn/zoop/main/examples/urlpp.js)
+removed because i changed my username
 
 ## todo
 add a version that doesn't automatically run
